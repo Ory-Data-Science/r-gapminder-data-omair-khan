@@ -13,12 +13,25 @@ analyze <- function(filename) {
   min_day_inflammation <- apply(dat, 2, min)
   plot(min_day_inflammation)
 }
-
-filenames <- list.files(path = "data", pattern = "inflammation", full.names = TRUE)
-#analyze("data/inflammation-01.csv")
-
-for (f in filenames){
-  print(f)
+analyze_all <- function(text_pattern) {
+  filenames <- list.files(path = "data", pattern = text_pattern, full.names = TRUE)
+  #analyze("data/inflammation-01.csv")
   analyze(f)
 }
+
+#filenames <- list.files(path = "data", pattern = "inflammation", full.names = TRUE)
+#analyze("data/inflammation-01.csv")
+
+#for (f in filenames){
+ # print(f)
+  #analyze(f)
+#}
+
+# write a function called analyze_all
+
+pdf("inflammation-01.pdf")
+analyze("data/inflammation-01.csv")
+dev.off()
+?dev.off
+
 
